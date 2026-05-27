@@ -1,0 +1,35 @@
+logandtrac Information: 0 : [INFO] 14:02:38.207 - Приложение TaskManager запущено
+    ThreadId=1
+    DateTime=2026-02-16T11:02:38.2105870Z
+[TRACE] 14:02:38.210 - Директория логов: /Users/soprano/codework/kt3/Logandtrac/Logs
+[TRACE] 14:02:38.210 - Файл лога: Logs/taskmanager_2026-02-16_14-02-38.log
+logandtrac Information: 0 : [INFO] 14:02:38.210 - === ЗАПУСК TASK MANAGER ===
+    ThreadId=1
+    DateTime=2026-02-16T11:02:38.2107330Z
+[TRACE] 14:02:38.210 - Версия: 1.0.0
+[TRACE] 14:02:38.211 - OS: Unix 26.3.0
+[TRACE] 14:02:38.211 - .NET Version: 10.0.3
+[TRACE] 14:02:58.318 - Начало операции AddTask
+[TRACE] 14:02:58.318 - Проверка названия: "wasd"
+logandtrac Information: 0 : [INFO] 14:02:58.319 - Задача "wasd" успешно добавлена. ID: 8063
+    ThreadId=1
+    DateTime=2026-02-16T11:02:58.3199300Z
+[TRACE] 14:02:58.319 - Всего задач после добавления: 1
+[TRACE] 14:02:58.320 - Конец операции AddTask Результат: Успешно
+[TRACE] 14:03:35.609 - Начало операции CompleteTask
+[TRACE] 14:03:35.609 - Поиск задачи для завершения: "wasd"
+logandtrac Information: 0 : [INFO] 14:03:35.609 - Задача "wasd" отмечена как выполненная
+    ThreadId=1
+    DateTime=2026-02-16T11:03:35.6100210Z
+[TRACE] 14:03:35.610 - Конец операции CompleteTask Результат: Успешно
+[TRACE] 14:03:42.604 - Начало операции ListTasks
+[TRACE] 14:03:42.605 - Текущее количество задач: 1
+logandtrac Information: 0 : [INFO] 14:03:42.605 - Выведено задач: 1
+    ThreadId=1
+    DateTime=2026-02-16T11:03:42.6057700Z
+[TRACE] 14:03:42.605 - Конец операции ListTasks
+[TRACE] 14:03:54.196 - Начало операции ShowStats
+logandtrac Information: 0 : [INFO] 14:03:54.197 - Статистика: всего=1, активных=0, завершено=1
+    ThreadId=1
+    DateTime=2026-02-16T11:03:54.1974450Z
+[TRACE] 14:03:54.197 - Конец операции ShowStats

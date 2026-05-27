@@ -1,0 +1,6 @@
+2026-02-16 17:56:34.941 [Information] Event: "Application_Started" { StartupTime: 02/16/2026 17:56:34, OS: "Unix 26.3.0", DotNetVersion: "10.0.3", User: "soprano", WorkingDirectory: "/Users/soprano/codework/kt3/Logandtrac" }
+2026-02-16 17:56:34.970 [Information] === TASK MANAGER v2.0 STARTED ===
+2026-02-16 17:56:56.274 [Debug] ▶ Начало операции SearchTasks | Query: "asdasdasd"
+2026-02-16 17:56:56.276 [Information] SEARCH: No results for query "asdasdasd"
+2026-02-16 17:56:56.277 [Debug] ◀ Конец операции SearchTasks | ResultsFound: 0
+2026-02-16 17:57:21.491 [Information] Application shutdown initiated by user

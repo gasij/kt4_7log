@@ -1,0 +1,46 @@
+logandtrac Information: 0 : [INFO] 13:09:04.787 - Приложение TaskManager запущено
+    ThreadId=1
+    DateTime=2026-02-16T10:09:04.7909840Z
+[TRACE] 13:09:04.791 - Директория логов: /Users/soprano/codework/kt3/Logandtrac/Logs
+[TRACE] 13:09:04.791 - Файл лога: Logs/taskmanager_2026-02-16_13-09-04.log
+logandtrac Information: 0 : [INFO] 13:09:04.791 - === ЗАПУСК TASK MANAGER ===
+    ThreadId=1
+    DateTime=2026-02-16T10:09:04.7911740Z
+[TRACE] 13:09:04.791 - Версия: 1.0.0
+[TRACE] 13:09:04.791 - OS: Unix 26.3.0
+[TRACE] 13:09:04.791 - .NET Version: 10.0.3
+[TRACE] 13:09:49.410 - Начало операции AddTask
+[TRACE] 13:09:49.411 - Проверка названия: "weasd"
+logandtrac Information: 0 : [INFO] 13:09:49.412 - Задача "weasd" успешно добавлена. ID: 9379
+    ThreadId=1
+    DateTime=2026-02-16T10:09:49.4126190Z
+[TRACE] 13:09:49.412 - Всего задач после добавления: 1
+[TRACE] 13:09:49.412 - Конец операции AddTask Результат: Успешно
+[TRACE] 13:09:54.615 - Начало операции ListTasks
+[TRACE] 13:09:54.616 - Текущее количество задач: 1
+logandtrac Information: 0 : [INFO] 13:09:54.616 - Выведено задач: 1
+    ThreadId=1
+    DateTime=2026-02-16T10:09:54.6167980Z
+[TRACE] 13:09:54.616 - Конец операции ListTasks
+logandtrac Warning: 0 : [WARN] 13:10:08.857 - Неизвестная команда: "remove weasd"
+    ThreadId=1
+    DateTime=2026-02-16T10:10:08.8581320Z
+logandtrac Warning: 0 : [WARN] 13:10:30.034 - Неизвестная команда: "remove weasd"
+    ThreadId=1
+    DateTime=2026-02-16T10:10:30.0344770Z
+[TRACE] 13:10:33.798 - Начало операции ListTasks
+[TRACE] 13:10:33.798 - Текущее количество задач: 1
+logandtrac Information: 0 : [INFO] 13:10:33.798 - Выведено задач: 1
+    ThreadId=1
+    DateTime=2026-02-16T10:10:33.7983060Z
+[TRACE] 13:10:33.798 - Конец операции ListTasks
+logandtrac Warning: 0 : [WARN] 13:10:48.148 - Неизвестная команда: "remove weasd"
+    ThreadId=1
+    DateTime=2026-02-16T10:10:48.1490640Z
+[TRACE] 13:11:03.150 - Начало операции RemoveTask
+[TRACE] 13:11:03.151 - Поиск задачи для удаления: "weasd"
+logandtrac Information: 0 : [INFO] 13:11:03.151 - Задача "weasd" успешно удалена
+    ThreadId=1
+    DateTime=2026-02-16T10:11:03.1516760Z
+[TRACE] 13:11:03.151 - Всего задач после удаления: 0
+[TRACE] 13:11:03.151 - Конец операции RemoveTask Результат: Успешно

@@ -1,0 +1,37 @@
+2026-04-23 14:27:10.073 [Information] Event: "Application_Started" { StartupTime: 04/23/2026 14:27:10, OS: "Unix 26.3.0", DotNetVersion: "10.0.5", User: "soprano", WorkingDirectory: "/Users/soprano/codework/kt3/Logandtrac" }
+2026-04-23 14:27:10.094 [Information] === TASK MANAGER v2.0 STARTED ===
+2026-04-23 14:39:52.440 [Information] Event: "Application_Started" { StartupTime: 04/23/2026 14:39:52, OS: "Unix 26.3.0", DotNetVersion: "10.0.5", User: "soprano", WorkingDirectory: "/Users/soprano/codework/kt3/Logandtrac" }
+2026-04-23 14:39:52.458 [Information] === TASK MANAGER v2.0 STARTED ===
+2026-04-23 14:40:03.542 [Debug] ▶ Начало операции AddTask { Title: "asdasd", Priority: "Medium" }
+2026-04-23 14:40:03.545 [Information] TASK_CREATED: "asdasd" (ID: 8008) | Total: 1
+2026-04-23 14:40:03.547 [Debug] ◀ Конец операции AddTask | Результат: Успешно | TaskId: 8008
+2026-04-23 14:40:03.548 [Information] TaskOperation: "CREATE" | Task: "asdasd" (ID: 8008) | Result: "success"
+2026-04-23 14:40:03.549 [Information] StructuredTaskOperation { Operation: "CREATE", TaskId: 8008, TaskTitle: "asdasd", IsCompleted: False, Priority: "Medium", Result: "success", Timestamp: 04/23/2026 14:40:03, TotalTasks: 1 }
+2026-04-23 14:40:03.550 [Information] Metric: "tasks.created" = 1 [("Metric": "tasks.created"), ("Value": 1), ("Timestamp": 04/23/2026 14:40:03), ("taskId": 8008), ("priority": "Medium")]
+2026-04-23 14:42:15.335 [Information] Event: "Application_Started" { StartupTime: 04/23/2026 14:42:15, OS: "Unix 26.3.0", DotNetVersion: "10.0.5", User: "soprano", WorkingDirectory: "/Users/soprano/codework/kt3/Logandtrac" }
+2026-04-23 14:42:15.353 [Information] === TASK MANAGER v2.0 STARTED ===
+2026-04-23 14:42:22.828 [Debug] ▶ Начало операции AddTask { Title: "sadasd", Priority: "Medium" }
+2026-04-23 14:42:22.832 [Information] TASK_CREATED: "sadasd" (ID: 3089) | Total: 1
+2026-04-23 14:42:22.833 [Debug] ◀ Конец операции AddTask | Результат: Успешно | TaskId: 3089
+2026-04-23 14:42:22.834 [Information] TaskOperation: "CREATE" | Task: "sadasd" (ID: 3089) | Result: "success"
+2026-04-23 14:42:22.834 [Information] StructuredTaskOperation { Operation: "CREATE", TaskId: 3089, TaskTitle: "sadasd", IsCompleted: False, Priority: "Medium", Result: "success", Timestamp: 04/23/2026 14:42:22, TotalTasks: 1 }
+2026-04-23 14:42:22.836 [Information] Metric: "tasks.created" = 1 [("Metric": "tasks.created"), ("Value": 1), ("Timestamp": 04/23/2026 14:42:22), ("taskId": 3089), ("priority": "Medium")]
+2026-04-23 14:42:50.928 [Debug] ▶ Начало операции ListTasks | CurrentCount: 1
+2026-04-23 14:42:50.932 [Information] TASKS_LISTED: Count = 1
+2026-04-23 14:42:50.932 [Debug] Priority group "Medium": 1 tasks
+2026-04-23 14:42:50.932 [Information] Metric: "tasks.listed" = 1 [("Metric": "tasks.listed"), ("Value": 1), ("Timestamp": 04/23/2026 14:42:50)]
+2026-04-23 14:42:50.933 [Debug] ◀ Конец операции ListTasks | TotalTasks: 1
+2026-04-23 14:43:03.060 [Debug] ▶ Начало операции RemoveTask { Title: "sadasd" }
+2026-04-23 14:43:03.062 [Information] TASK_DELETED: "sadasd" (ID: 3089) | Remaining: 0
+2026-04-23 14:43:03.062 [Debug] ◀ Конец операции RemoveTask | Результат: Успешно
+2026-04-23 14:43:03.062 [Information] TaskOperation: "DELETE" | Task: "sadasd" (ID: 3089) | Result: "success"
+2026-04-23 14:43:03.062 [Information] StructuredTaskOperation { Operation: "DELETE", TaskId: 3089, TaskTitle: "sadasd", IsCompleted: False, Priority: "Medium", Result: "success", Timestamp: 04/23/2026 14:43:03, TotalTasks: 0 }
+2026-04-23 14:43:03.064 [Information] Metric: "tasks.deleted" = 1 [("Metric": "tasks.deleted"), ("Value": 1), ("Timestamp": 04/23/2026 14:43:03), ("taskId": 3089)]
+2026-04-23 14:56:11.495 [Information] Event: "Application_Started" { StartupTime: 04/23/2026 14:56:11, OS: "Unix 26.3.0", DotNetVersion: "10.0.5", User: "soprano", WorkingDirectory: "/Users/soprano/codework/kt3/Logandtrac" }
+2026-04-23 14:56:11.513 [Information] === TASK MANAGER v2.0 STARTED ===
+2026-04-23 14:56:19.698 [Debug] ▶ Начало операции AddTask { Title: "sdfsfs", Priority: "Medium" }
+2026-04-23 14:56:19.702 [Information] TASK_CREATED: "sdfsfs" (ID: 3578) | Total: 1
+2026-04-23 14:56:19.704 [Debug] ◀ Конец операции AddTask | Результат: Успешно | TaskId: 3578
+2026-04-23 14:56:19.704 [Information] TaskOperation: "CREATE" | Task: "sdfsfs" (ID: 3578) | Result: "success"
+2026-04-23 14:56:19.705 [Information] StructuredTaskOperation { Operation: "CREATE", TaskId: 3578, TaskTitle: "sdfsfs", IsCompleted: False, Priority: "Medium", Result: "success", Timestamp: 04/23/2026 14:56:19, TotalTasks: 1 }
+2026-04-23 14:56:19.706 [Information] Metric: "tasks.created" = 1 [("Metric": "tasks.created"), ("Value": 1), ("Timestamp": 04/23/2026 14:56:19), ("taskId": 3578), ("priority": "Medium")]
