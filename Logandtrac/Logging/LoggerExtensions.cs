@@ -1,11 +1,60 @@
 // Logging/LoggerExtensions.cs
 using Serilog;
 using logandtrac.Models;
+using System.Diagnostics;
 
 namespace logandtrac.Logging;
 
 public static class LoggerExtensions
 {
+    public sealed class OperationTraceScope : IDisposable
+    {
+        private readonly ILogger _logger;
+        private readonly string _operation;
+        private readonly Stopwatch _stopwatch;
+        private bool _disposed;
+        private string _status = "success";
+        private string _result = "Успешно";
+        private object? _endData;
+
+        internal OperationTraceScope(ILogger logger, string operation, object? startData = null)
+        {
+            _logger = logger;
+            _operation = operation;
+            _stopwatch = Stopwatch.StartNew();
+            _logger.LogOperationStart(operation, startData);
+        }
+
+        public void SetResult(string status, string result, object? endData = null)
+        {
+            _status = status;
+            _result = result;
+            _endData = endData;
+        }
+
+        public void Dispose()
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            _stopwatch.Stop();
+            _logger.LogOperationEnd(
+                _operation,
+                $"{_result} | Статус: {_status} | Время: {_stopwatch.ElapsedMilliseconds}ms",
+                _endData
+            );
+
+            _disposed = true;
+        }
+    }
+
+    public static OperationTraceScope BeginOperationTrace(this ILogger logger, string operation, object? data = null)
+    {
+        return new OperationTraceScope(logger, operation, data);
+    }
+
     public static void LogOperationStart(this ILogger logger, string operation, object? data = null)
     {
         if (data != null)

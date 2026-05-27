@@ -21,13 +21,13 @@ public class TaskManagerService
     public void AddTask(string title, string priority = "Medium")
     {
         var operationData = new { Title = title, Priority = priority };
-        _logger.Debug("▶ Начало операции AddTask {@OperationData}", operationData);
+        using var trace = _logger.BeginOperationTrace("AddTask", operationData);
 
         if (string.IsNullOrWhiteSpace(title))
         {
             _logger.Warning("ADD_TASK_FAILED: Empty title");
             Console.WriteLine("Ошибка: Название задачи не может быть пустым!");
-            _logger.Debug("◀ Конец операции AddTask | Результат: Отменено - пустое название");
+            trace.SetResult("warning", "Отменено - пустое название");
             
             StructuredLogger.LogWarning("Task creation failed - empty title", new { AttemptedTime = DateTime.Now });
             return;
@@ -37,7 +37,7 @@ public class TaskManagerService
         {
             _logger.Warning("ADD_TASK_FAILED: Duplicate title {Title}", title);
             Console.WriteLine("Ошибка: Задача с таким названием уже существует!");
-            _logger.Debug("◀ Конец операции AddTask | Результат: Отменено - дубликат");
+            trace.SetResult("warning", "Отменено - дубликат", new { Title = title });
             
             StructuredLogger.LogWarning("Task creation failed - duplicate", new { Title = title, Time = DateTime.Now });
             return;
@@ -48,7 +48,7 @@ public class TaskManagerService
         
         _logger.Information("TASK_CREATED: {TaskTitle} (ID: {TaskId}) | Total: {TotalTasks}", 
             task.Title, task.Id, tasks.Count);
-        _logger.Debug("◀ Конец операции AddTask | Результат: Успешно | TaskId: {TaskId}", task.Id);
+        trace.SetResult("success", "Успешно", new { TaskId = task.Id, TotalTasks = tasks.Count });
         
         Console.WriteLine($"✓ Задача \"{title}\" успешно добавлена! (ID: {task.Id}, Приоритет: {priority})");
         
@@ -63,7 +63,7 @@ public class TaskManagerService
     public void RemoveTask(string title)
     {
         var operationData = new { Title = title };
-        _logger.Debug("▶ Начало операции RemoveTask {@OperationData}", operationData);
+        using var trace = _logger.BeginOperationTrace("RemoveTask", operationData);
 
         var task = tasks.FirstOrDefault(t => t.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
 
@@ -71,7 +71,7 @@ public class TaskManagerService
         {
             _logger.Error("REMOVE_TASK_FAILED: Task not found {Title}", title);
             Console.WriteLine($"Ошибка: Задача \"{title}\" не найдена!");
-            _logger.Debug("◀ Конец операции RemoveTask | Результат: Ошибка - задача не найдена");
+            trace.SetResult("error", "Ошибка - задача не найдена", new { Title = title });
             
             StructuredLogger.LogError("Task not found for deletion", null, new { Title = title, Time = DateTime.Now });
             return;
@@ -82,7 +82,7 @@ public class TaskManagerService
         
         _logger.Information("TASK_DELETED: {TaskTitle} (ID: {TaskId}) | Remaining: {TotalTasks}", 
             title, taskId, tasks.Count);
-        _logger.Debug("◀ Конец операции RemoveTask | Результат: Успешно");
+        trace.SetResult("success", "Успешно", new { TaskId = taskId, TotalTasks = tasks.Count });
         
         Console.WriteLine($"✓ Задача \"{title}\" удалена!");
         
@@ -95,7 +95,7 @@ public class TaskManagerService
 
     public void ListTasks()
     {
-        _logger.Debug("▶ Начало операции ListTasks | CurrentCount: {Count}", tasks.Count);
+        using var trace = _logger.BeginOperationTrace("ListTasks", new { CurrentCount = tasks.Count });
 
         Console.WriteLine("\n=== СПИСОК ЗАДАЧ ===");
         Console.WriteLine($"Всего задач: {tasks.Count}");
@@ -105,6 +105,7 @@ public class TaskManagerService
         {
             _logger.Information("LIST_TASKS: Empty list");
             Console.WriteLine("Список задач пуст.");
+            trace.SetResult("warning", "Список пуст", new { TotalTasks = tasks.Count });
         }
         else
         {
@@ -129,9 +130,9 @@ public class TaskManagerService
             }
             
             StructuredLogger.LogMetric("tasks.listed", tasks.Count);
+            trace.SetResult("success", "Успешно", new { TotalTasks = tasks.Count });
         }
-        
-        _logger.Debug("◀ Конец операции ListTasks | TotalTasks: {TotalTasks}", tasks.Count);
+
         Console.WriteLine("─────────────────────");
     }
 
