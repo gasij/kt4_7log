@@ -8,6 +8,22 @@ namespace logandtrac;
 
 class Program
 {
+    static void ExecuteCommandSafely(ILogger logger, string command, Action action)
+    {
+        try
+        {
+            action();
+        }
+        catch (Exception ex)
+        {
+            StructuredLogger.LogException(
+                ex,
+                $"ConsoleCommand:{command}",
+                new { Command = command },
+                "Error");
+        }
+    }
+
     static void Main(string[] args)
     {
         // Настраиваем структурированное логирование
@@ -40,55 +56,62 @@ class Program
                 
                 string[] parts = input.Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 string command = parts[0].ToLower();
-                
-                switch (command)
+
+                ExecuteCommandSafely(logger, command, () =>
                 {
-                    case "add":
-                        AddTask(taskManager, parts);
-                        break;
-                        
-                    case "remove":
-                        RemoveTask(taskManager, parts);
-                        break;
-                        
-                    case "list":
-                        taskManager.ListTasks();
-                        break;
-                        
-                    case "complete":
-                        CompleteTask(taskManager, parts);
-                        break;
-                        
-                    case "search":
-                        SearchTasks(taskManager, parts);
-                        break;
-                        
-                    case "stats":
-                        taskManager.ShowStats();
-                        break;
-                        
-                    case "help":
-                        ShowHelp();
-                        break;
-                        
-                    case "exit":
-                        isRunning = false;
-                        logger.Information("Application shutdown initiated by user");
-                        Console.WriteLine("\nДо свидания!");
-                        Console.WriteLine($"Структурированные логи сохранены в Logs/");
-                        break;
-                        
-                    default:
-                        logger.Warning("Unknown command: {Command}", command);
-                        Console.WriteLine($"Неизвестная команда: {command}");
-                        Console.WriteLine("Введите 'help' для списка команд.");
-                        break;
-                }
+                    switch (command)
+                    {
+                        case "add":
+                            AddTask(taskManager, parts);
+                            break;
+                            
+                        case "remove":
+                            RemoveTask(taskManager, parts);
+                            break;
+                            
+                        case "list":
+                            taskManager.ListTasks();
+                            break;
+                            
+                        case "complete":
+                            CompleteTask(taskManager, parts);
+                            break;
+                            
+                        case "search":
+                            SearchTasks(taskManager, parts);
+                            break;
+                            
+                        case "stats":
+                            taskManager.ShowStats();
+                            break;
+                            
+                        case "help":
+                            ShowHelp();
+                            break;
+                            
+                        case "exit":
+                            isRunning = false;
+                            logger.Information("Application shutdown initiated by user");
+                            Console.WriteLine("\nДо свидания!");
+                            Console.WriteLine($"Структурированные логи сохранены в Logs/");
+                            break;
+                            
+                        default:
+                            logger.Warning("Unknown command: {Command}", command);
+                            Console.WriteLine($"Неизвестная команда: {command}");
+                            Console.WriteLine("Введите 'help' для списка команд.");
+                            break;
+                    }
+                });
             }
         }
         catch (Exception ex)
         {
-            logger.Fatal(ex, "Critical application error");
+            StructuredLogger.LogException(
+                ex,
+                "Application.Main",
+                new { Args = args },
+                "Fatal");
             Console.WriteLine($"Критическая ошибка: {ex.Message}");
         }
         finally

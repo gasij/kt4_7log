@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Serilog;
+using Serilog.Events;
 using logandtrac.Models;
 
 namespace logandtrac.Logging;
@@ -146,5 +147,37 @@ public static class StructuredLogger
     public static void LogInformation(string message, params object[] propertyValues)
     {
         _logger.Information(message, propertyValues);
+    }
+
+    public static void LogException(
+        Exception exception,
+        string operation,
+        object? context = null,
+        string level = "Error",
+        bool notifyConsole = true)
+    {
+        var exceptionData = new
+        {
+            Operation = operation,
+            ExceptionMessage = exception.Message,
+            ExceptionStackTrace = exception.StackTrace,
+            Level = level,
+            Context = context,
+            Timestamp = DateTime.Now
+        };
+
+        if (Enum.TryParse(level, true, out LogEventLevel logLevel))
+        {
+            _logger.Write(logLevel, exception, "EXCEPTION {@ExceptionData}", exceptionData);
+        }
+        else
+        {
+            _logger.Error(exception, "EXCEPTION {@ExceptionData}", exceptionData);
+        }
+
+        if (notifyConsole)
+        {
+            Console.WriteLine("!!! Ошибка !!! Проверьте логи для деталей.");
+        }
     }
 }
